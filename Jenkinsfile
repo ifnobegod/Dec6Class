@@ -13,38 +13,27 @@ pipeline{
 		stage('gitclone') {
 
 		      steps {
-		         git 'https://github.com/theitern/Dec6Class.git'
+		         git 'https://github.com/theitern/Dec6Class.git+'
 		      }
 		}
 		
 		stage('Build') {
 			steps {
 			
-			   sh 'docker build -t akinaregbesola/class_app:${BUILD_NUMBER} .'
+			   sh 'docker build -t ifnobegod/class_app:${BUILD_NUMBER} .'
 			}
 		}
 		
 		stage('Login') {
 		
 			steps {
-			   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login --username akinaregbesola --password-stdin'    
+			   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login --username ifnobegod --password-stdin'    
 			}
 		}
 
 		stage('Push') {
 			
 			steps {
-			   sh 'docker push akinaregbesola/class_app:${BUILD_NUMBER}'
+			   sh 'docker push ifnobegod/class_app:${BUILD_NUMBER}'
 			}
 		}
-		}
-	
-	post {
-	    always {
-		sh 'docker logout'
-	    }
-    }
-
-}
-
-
