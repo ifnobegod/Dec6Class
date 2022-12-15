@@ -1,4 +1,2 @@
-If you see this page, then our ci/cd pipeline is working fine
-
-
-
+<h1> This is a demo Home Page </h1>
+Let's see how this works
